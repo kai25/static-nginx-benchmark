@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"runtime"
 )
 
 func main() {
@@ -17,7 +18,9 @@ func main() {
 		w.Write(dat)
 	})
 
-	fmt.Println("Runnning server")
+	runtime.GOMAXPROCS(1)
+	fmt.Println("Runnninga server GOMAXPROCS=%v", runtime.GOMAXPROCS(1))
+
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
 		fmt.Println("Failed", err)
