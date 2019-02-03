@@ -7,15 +7,29 @@ import (
 	"runtime"
 )
 
-func main() {
-	dat, errFile := ioutil.ReadFile("/data/med.txt")
-	if errFile != nil {
-		fmt.Println("Can not read file. Exiting")
-		return
+func loadFile(fileName string) []byte {
+	fileBytes, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		panic("Can not read file. Exiting")
 	}
+	return fileBytes
+}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write(dat)
+func main() {
+	medFile := loadFile("/data/med.txt")
+	smallFile := loadFile("/data/small.txt")
+	bigFile := loadFile("/data/big.txt")
+
+	http.HandleFunc("/med.txt", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(medFile)
+	})
+
+	http.HandleFunc("/small.txt", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(smallFile)
+	})
+
+	http.HandleFunc("/big.txt", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(bigFile)
 	})
 
 	runtime.GOMAXPROCS(1)
