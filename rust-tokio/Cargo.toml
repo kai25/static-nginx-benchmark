@@ -1,0 +1,9 @@
+[package]
+name = "rust-tokio"
+version = "0.1.0"
+authors = ["vomelchenko"]
+edition = "2018"
+
+[dependencies]
+hyper = "0.12"
+tokio = "0.1.15"

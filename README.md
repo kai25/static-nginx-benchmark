@@ -90,5 +90,34 @@ Nginx static serving worker=1:
 requested address: localhost/127.0.0.1:8080
 > j.i.IOException: Premature close                                 1303 (12.33%)
 ================================================================================
+
+
+
+================================================================================
+
+FastHttp Go Implementation
+
+================================================================================
+---- Global Information --------------------------------------------------------
+> request count                                      89200 (OK=77428  KO=11772 )
+> min response time                                      0 (OK=0      KO=3352  )
+> max response time                                  83541 (OK=64632  KO=83541 )
+> mean response time                                 21398 (OK=19914  KO=31159 )
+> std deviation                                      19231 (OK=19184  KO=16490 )
+> response time 50th percentile                      20030 (OK=16925  KO=32075 )
+> response time 75th percentile                      36395 (OK=34719  KO=44085 )
+> response time 95th percentile                      54281 (OK=53354  KO=57671 )
+> response time 99th percentile                      61626 (OK=61122  KO=69009 )
+> mean requests/sec                                401.802 (OK=348.775 KO=53.027)
+---- Response Time Distribution ------------------------------------------------
+> t < 800 ms                                         22172 ( 25%)
+> 800 ms < t < 1200 ms                                1019 (  1%)
+> t > 1200 ms                                        54237 ( 61%)
+> failed                                             11772 ( 13%)
+---- Errors --------------------------------------------------------------------
+> i.n.c.AbstractChannel$AnnotatedSocketException: Cannot assign   10782 (91.59%)
+requested address: localhost/127.0.0.1:8080
+> j.i.IOException: Premature close                                  990 ( 8.41%)
+================================================================================
 ```
 
