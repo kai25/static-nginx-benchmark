@@ -8,11 +8,15 @@ remote_command () {
 }
 
 start_container () {
+    echo "Starting container $1"
     folder_name="$1"
     remote_command "
         cd ~/testing/$REPO_NAME/$1;
+        cat server.go
+        sudo docker stop $1 && sudo docker rm $1;
         sudo docker build -t "$1" .;
         sudo docker run -d --name $1 -p 80:80 $1;
+        sudo docker ps;
     "
 } 
 
@@ -28,6 +32,9 @@ stop_container () {
 remote_command "
 mkdir -p testing;
 cd testing;
+if [ ! -f $REPO_NAME ]; then
+    rm -rf $REPO_NAME;
+fi
 git clone https://github.com/kai25/$REPO_NAME;
 exit;
 "
