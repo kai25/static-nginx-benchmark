@@ -10,9 +10,9 @@ use std::sync::{Arc};
 fn main() {
     let addr = ([0, 0, 0, 0], 80).into();
 
-    let med_file_bytes_pointer = Arc::new(fs::read("./static/med.txt").unwrap());
-    let big_file_bytes_pointer = Arc::new(fs::read("./static/big.txt").unwrap());
-    let small_file_bytes_pointer = Arc::new(fs::read("./static/small.txt").unwrap());
+    let med_file_bytes_pointer = Arc::new(fs::read("/data/med.txt").unwrap());
+    let big_file_bytes_pointer = Arc::new(fs::read("/data/big.txt").unwrap());
+    let small_file_bytes_pointer = Arc::new(fs::read("/data/small.txt").unwrap());
 
     let new_svc = move || {
         let med_file_bytes = Arc::clone(&med_file_bytes_pointer);
