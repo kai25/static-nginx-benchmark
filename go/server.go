@@ -21,7 +21,7 @@ func main() {
 	runtime.GOMAXPROCS(1)
 	fmt.Println("Runnninga server GOMAXPROCS=%v", runtime.GOMAXPROCS(1))
 
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		fmt.Println("Failed", err)
 	}
