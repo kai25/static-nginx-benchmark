@@ -5,26 +5,25 @@ use hyper::{Body, Request, Response, Server};
 use hyper::rt::Future;
 use hyper::service::service_fn_ok;
 
-use std::sync::{Arc};
-
 fn main() {
     let addr = ([0, 0, 0, 0], 80).into();
 
-    let med_file_bytes_pointer = Arc::new(fs::read("/data/med.txt").unwrap());
-    let big_file_bytes_pointer = Arc::new(fs::read("/data/big.txt").unwrap());
-    let small_file_bytes_pointer = Arc::new(fs::read("/data/small.txt").unwrap());
+    let med_file_bytes: Vec<u8> = fs::read("static/med.txt").unwrap();
+    let small_file_bytes: Vec<u8> = fs::read("static/big.txt").unwrap();
+    let big_file_bytes: Vec<u8> = fs::read("static/small.txt").unwrap();
+
+    let s_med_file:&'static[u8] = unsafe {std::mem::transmute(&med_file_bytes[..])};
+    let s_big_file_bytes:&'static[u8] = unsafe {std::mem::transmute(&big_file_bytes[..])};
+    let s_small_file_bytes:&'static[u8] = unsafe {std::mem::transmute(&small_file_bytes[..])};
 
     let new_svc = move || {
-        let med_file_bytes = Arc::clone(&med_file_bytes_pointer);
-        let small_file_bytes = Arc::clone(&small_file_bytes_pointer);
-        let big_file_bytes = Arc::clone(&big_file_bytes_pointer);
         service_fn_ok(move |req: Request<Body>| {
             if req.uri().path() == "/med.txt" {
-                return Response::new(Body::from(med_file_bytes.clone().to_vec()));
+                return Response::new(Body::from(s_med_file));
             } else if req.uri().path() == "/big.txt" {
-                return Response::new(Body::from(big_file_bytes.clone().to_vec()));
+                return Response::new(Body::from(s_big_file_bytes));
             } else if req.uri().path() == "/small.txt" {
-                return Response::new(Body::from(small_file_bytes.clone().to_vec()));
+                return Response::new(Body::from(s_small_file_bytes));
             } else {
                 return Response::new(Body::from("404")); 
             }
