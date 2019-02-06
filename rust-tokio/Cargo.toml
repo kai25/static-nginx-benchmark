@@ -7,3 +7,5 @@ edition = "2018"
 [dependencies]
 hyper = "0.12"
 tokio = "0.1.15"
+bytes = "0.4.11"
+http = "0.1.15"
