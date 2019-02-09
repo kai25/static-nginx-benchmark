@@ -8,9 +8,9 @@ use hyper::service::service_fn_ok;
 fn main() {
     let addr = ([0, 0, 0, 0], 80).into();
 
-    let med_file_bytes: Vec<u8> = fs::read("static/med.txt").unwrap();
-    let small_file_bytes: Vec<u8> = fs::read("static/big.txt").unwrap();
-    let big_file_bytes: Vec<u8> = fs::read("static/small.txt").unwrap();
+    let med_file_bytes: Vec<u8> = fs::read("/data/med.txt").unwrap();
+    let small_file_bytes: Vec<u8> = fs::read("/data/big.txt").unwrap();
+    let big_file_bytes: Vec<u8> = fs::read("/data/small.txt").unwrap();
 
     let s_med_file:&'static[u8] = unsafe {std::mem::transmute(&med_file_bytes[..])};
     let s_big_file_bytes:&'static[u8] = unsafe {std::mem::transmute(&big_file_bytes[..])};
