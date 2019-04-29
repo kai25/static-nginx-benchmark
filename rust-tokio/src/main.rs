@@ -11,9 +11,9 @@ use http::response::{Builder};
 fn main() {
     let addr = ([0, 0, 0, 0], 80).into();
 
-    let med_file_bytes = Bytes::from(fs::read("static/med.txt").unwrap());
-    let small_file_bytes = Bytes::from(fs::read("static/small.txt").unwrap());
-    let big_file_bytes = Bytes::from(fs::read("static/big.txt").unwrap());
+    let med_file_bytes = Bytes::from(fs::read("/data/med.txt").unwrap());
+    let small_file_bytes = Bytes::from(fs::read("/data/small.txt").unwrap());
+    let big_file_bytes = Bytes::from(fs::read("/data/big.txt").unwrap());
 
     let server = Server::bind(&addr)
         .serve(move || {
