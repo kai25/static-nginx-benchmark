@@ -1,6 +1,6 @@
 set -e
 
-ADDRESS=35.210.147.86
+ADDRESS='35.204.3.61'
 REPO_NAME=static-nginx-benchmark
 GATLING_BIN_PATH=~/soft/gatling/bin
 SIMULATION_FOLDER=~/gatling_results/
