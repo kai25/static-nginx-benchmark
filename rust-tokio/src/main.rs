@@ -13,7 +13,7 @@ use http::response::{Builder};
 
 
 fn main() {
-    let addr = ([0, 0, 0, 0], 8080).into();
+    let addr = ([0, 0, 0, 0], 80).into();
 
     let mut mapping = HashMap::new();
 
