@@ -15,6 +15,8 @@ fn main() {
             service_fn_ok(|req: Request<Body>| {
                 match req.uri().path() {
                     "/med.txt" => Response::new(Body::from(fs::read("/data/med.txt").unwrap())),
+                    "/med1.txt" => Response::new(Body::from(fs::read("/data/med1.txt").unwrap())),
+                    "/med2.txt" => Response::new(Body::from(fs::read("/data/med2.txt").unwrap())),
                     _ => Builder::new()
                         .status(404)
                         .body(Body::from("404 not found"))
