@@ -19,18 +19,18 @@ fn main() {
 
     mapping.insert(
         "/med.txt",
-        Bytes::from(fs::read("static/med.txt").unwrap()),
+        Bytes::from(fs::read("/data/med.txt").unwrap()),
     );
 
     mapping.insert(
         "/med1.txt",
-        Bytes::from(fs::read("static/med1.txt").unwrap()),
+        Bytes::from(fs::read("/data/med1.txt").unwrap()),
 
     );
 
     mapping.insert(
         "/med2.txt",
-        Bytes::from(fs::read("static/med1.txt").unwrap()),
+        Bytes::from(fs::read("/data/med2.txt").unwrap()),
     );
 
     let mapping_rc = Arc::new(mapping);
