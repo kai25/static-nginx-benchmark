@@ -15,7 +15,7 @@ use tk_sendfile::DiskPool;
 
 
 fn main() {
-    let addr = env::args().nth(1).unwrap_or("0.0.0.0:8080".to_string());
+    let addr = env::args().nth(1).unwrap_or("0.0.0.0:80".to_string());
     let addr = addr.parse::<SocketAddr>().unwrap();
     let disk_pool = DiskPool::new(CpuPool::new(40));
 
