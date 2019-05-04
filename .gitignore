@@ -1,2 +1,5 @@
 /rust-tokio/.idea/
 /rust-tokio/target/
+/rust_sendfile/target/
+/rust_sendfile/.vscode
+
