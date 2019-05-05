@@ -1,0 +1,14 @@
+[package]
+name = "rust-tokio-tls"
+version = "0.1.0"
+authors = ["vomelchenko <v.omelchenko@smartweb.com.ua>"]
+edition = "2018"
+
+[dependencies]
+bytes = "0.4.11"
+futures = "0.1.23"
+native-tls = "0.2"
+tokio = "0.1"
+tokio-io = "0.1.7"
+tokio-tls = "0.2.1"
+
