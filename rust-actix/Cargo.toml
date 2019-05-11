@@ -1,0 +1,9 @@
+[package]
+name = "rust-actix"
+version = "0.1.0"
+authors = ["vomelchenko <v.omelchenko@smartweb.com.ua>"]
+edition = "2018"
+
+[dependencies]
+actix-web = "0.7.19"
+bytes = "0.4.12"
