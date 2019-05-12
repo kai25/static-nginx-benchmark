@@ -8,13 +8,6 @@ use rustls::{NoClientAuth, ServerConfig};
 use std::fs;
 
 
-fn index(req: HttpRequest) -> Result<HttpResponse, Error> {
-    println!("{:?}", req);
-    Ok(HttpResponse::Ok()
-        .content_type("text/plain")
-        .body("Welcome!"))
-}
-
 fn main() -> std::io::Result<()> {
     // load ssl keys
     let mut config = ServerConfig::new(NoClientAuth::new());
@@ -35,8 +28,7 @@ fn main() -> std::io::Result<()> {
                     .body(file_data.clone())
             }))
     })
-    .workers(10)
-    .maxconnrate(100)
+    .workers(4)
     .bind_rustls("0.0.0.0:443", config)?
     .run()
 }
