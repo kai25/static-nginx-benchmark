@@ -15,13 +15,15 @@ fn main() -> std::io::Result<()> {
         .unwrap();
     builder.set_certificate_chain_file("/etc/cert.pem").unwrap();
 
+    let file_bytes = Bytes::from(fs::read("/data/med.txt").unwrap());
 
-    HttpServer::new(|| {
+    HttpServer::new(move || {
+        let _bytes = file_bytes.clone();
         App::new()
-            .service(web::resource("/med.txt").to(|req: HttpRequest| {
+            .service(web::resource("/med.txt").to(move |_req: HttpRequest| {
                 HttpResponse::Ok()
                     .content_type("text/plain")
-                    .body(Bytes::from(fs::read("/data/med.txt").unwrap()))
+                    .body(_bytes.clone())
             }))
     })
     .workers(4)
