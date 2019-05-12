@@ -25,7 +25,8 @@ fn main() -> std::io::Result<()> {
                     .body(Bytes::from(fs::read("/data/med.txt").unwrap()))
             }))
     })
-    .workers(2)
+    .workers(1)
+    .disable_signals()
     .bind_rustls("0.0.0.0:443", config)?
     .run()
 }
