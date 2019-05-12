@@ -9,7 +9,7 @@ use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
 fn main() -> std::io::Result<()> {
     // Create the TLS acceptor.
-    let mut builder = SslAcceptor::mozilla_intermediate(SslMethod::tls()).unwrap();
+    let mut builder = SslAcceptor::mozilla_modern(SslMethod::tls()).unwrap();
     builder
         .set_private_key_file("/etc/key.pem", SslFiletype::PEM)
         .unwrap();
@@ -26,7 +26,7 @@ fn main() -> std::io::Result<()> {
                     .body(_bytes.clone())
             }))
     })
-    .workers(4)
+    .workers(2)
     .disable_signals()
     .bind_ssl("0.0.0.0:443", builder)?
     .run()
