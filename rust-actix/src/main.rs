@@ -35,6 +35,8 @@ fn main() -> std::io::Result<()> {
                     .body(file_data.clone())
             }))
     })
+    .workers(10)
+    .maxconnrate(100)
     .bind_rustls("0.0.0.0:443", config)?
     .run()
 }
