@@ -1,0 +1,23 @@
+http:
+  host: 0.0.0.0
+  port: 80
+
+ssl:
+  enabled: true
+  host: 0.0.0.0
+  port: 4433
+  cert_path: ssl/cert.pem
+  key_path: ssl/key.pem
+
+runtime:
+  workers: 4
+  max_memory_size: 1000  # in Mb
+
+content:
+  root_path: .
+
+  files:
+    /med.txt:
+      path: /data/med.txt
+      in_memory: true
+
