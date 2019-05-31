@@ -5,7 +5,7 @@ http:
 ssl:
   enabled: true
   host: 0.0.0.0
-  port: 433
+  port: 443
   cert_path: ssl/cert.pem
   key_path: ssl/key.pem
 
