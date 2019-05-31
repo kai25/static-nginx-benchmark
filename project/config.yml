@@ -23,7 +23,7 @@ content:
     /small.txt:
       path: /data/small.txt
       in_memory: true
-    /mbiged.txt:
+    /big.txt:
       path: /data/big.txt
       in_memory: true
 
