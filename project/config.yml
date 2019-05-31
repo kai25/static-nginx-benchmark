@@ -5,7 +5,7 @@ http:
 ssl:
   enabled: true
   host: 0.0.0.0
-  port: 4433
+  port: 433
   cert_path: ssl/cert.pem
   key_path: ssl/key.pem
 
@@ -19,5 +19,11 @@ content:
   files:
     /med.txt:
       path: /data/med.txt
+      in_memory: true
+    /small.txt:
+      path: /data/small.txt
+      in_memory: true
+    /mbiged.txt:
+      path: /data/big.txt
       in_memory: true
 
